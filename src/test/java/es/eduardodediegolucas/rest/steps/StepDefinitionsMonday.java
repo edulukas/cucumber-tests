@@ -10,26 +10,26 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 @Slf4j
-public class StepDefinitions {
+public class StepDefinitionsMonday {
 
 	LocalDate localDate;
 	boolean response;
 
-	@Given("^today is Sunday$")
-	public void givenTodayIsSunday(){
+	@Given("^today is Saturday$")
+	public void givenTodayIsSaturday(){
 		localDate = LocalDate.now()
-				.withDayOfMonth(18)
+				.withDayOfMonth(17)
 				.withMonth(11)
 				.withYear(2018);
 	}
 
-	@When("^I ask whether it's Friday yet$")
-	public void whenIAskWhetherItsFridayYet(){
-		response = DayOfWeek.FRIDAY.equals(localDate.getDayOfWeek());
+	@When("^I ask whether it's Monday already$")
+	public void whenIAskWhetherItsMondayAlready(){
+		response = DayOfWeek.MONDAY.equals(localDate.getDayOfWeek());
 	}
 
-	@Then("^I should be told \"([^\"]*)\"$")
-	public void iShouldBeTold(String answer){
+	@Then("^I must be told \"([^\"]*)\"$")
+	public void iMustBeTold(String answer){
 		Assert.assertEquals(Boolean.FALSE, response);
 		log.info("Answer is {}", answer);
 	}
